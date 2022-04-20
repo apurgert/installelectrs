@@ -13,5 +13,8 @@ https://github.com/romanz/electrs
 
 To run:
 
+git clone https://github.com/apurgert/electrsinstall
+cd electrsinstall
 chmod 777 installelectrs.sh
+
 ./installelectrs.sh
