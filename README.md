@@ -22,4 +22,5 @@ chmod 777 installelectrs.sh
 ./installelectrs.sh
 
 BTC bc1q8qf29acqrh5yqxqjqarcr9zzxuk3zsjjzy6rwf
+
 Unstoppable Domain apurgert.crypto
