@@ -17,7 +17,7 @@ git clone https://github.com/apurgert/electrsinstall
 
 cd electrsinstall
 
-chmod 777 installelectrs.sh
+chmod u+x installelectrs.sh
 
 ./installelectrs.sh
 
