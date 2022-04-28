@@ -17,8 +17,6 @@ git clone https://github.com/apurgert/installelectrs
 
 cd installelectrs
 
-chmod u+x installelectrs.sh
-
 ./installelectrs.sh
 
 BTC bc1q8qf29acqrh5yqxqjqarcr9zzxuk3zsjjzy6rwf
