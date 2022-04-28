@@ -1,4 +1,4 @@
-# electrsinstall
+# installelectrs
 Automatic install script for romanz electrs.  Built for the FutureBit Apollo.
 
 I manually installed Tor and electrs on my Futurebit.  I took the commands and put them into an installer.
@@ -13,9 +13,9 @@ https://github.com/romanz/electrs
 
 To run:
 
-git clone https://github.com/apurgert/electrsinstall
+git clone https://github.com/apurgert/installelectrs
 
-cd electrsinstall
+cd installelectrs
 
 chmod u+x installelectrs.sh
 
