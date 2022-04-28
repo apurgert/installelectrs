@@ -83,7 +83,7 @@ else
 
 sudo touch /etc/systemd/system/electrs.service
 
-sudo bash -c 'echo "
+echo "
 [Unit] 
 Description=Electrs
 After=bitcoind.service
@@ -101,7 +101,7 @@ RestartSec=60
 
 [Install]
 WantedBy=multi-user.target
-" > /etc/systemd/system/electrs.service'
+" | sudo tee -a /etc/systemd/system/electrs.service >/dev/null
 fi
 sudo systemctl start electrs
 
@@ -111,14 +111,13 @@ if grep -q "electrs" "/etc/prometheus/prometheus.yml"; then
 
 else
 
-sudo bash -c 'echo "
+echo "
 
-job_name: electrs
+  - job_name: electrs
+    static_configs:
+            - targets: ['localhost:4224']
 
-static_configs:
-
-targets: ['localhost:4224']
-" >> /etc/prometheus/prometheus.yml '
+" | sudo tee -a /etc/prometheus/prometheus.yml >/dev/null
 
 fi 
 sudo systemctl restart prometheus
@@ -127,5 +126,6 @@ myIP="$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9
 echo "electrs version "; ./target/release/electrs --version 
 systemctl is-active --quiet tor && echo $'\e[1;32m'tor is running$'\e[0m' || echo $'\e[1;31m'tor is NOT running$'\e[0m'
 systemctl is-active --quiet electrs && echo $'\e[1;32m'electrs is running$'\e[0m' || echo $'\e[1;31m'electrs is NOT running$'\e[0m'
+systemctl is-active --quiet electrs && echo $'\e[1;32m'prometheus is running$'\e[0m' || echo $'\e[1;31m'prometheus is NOT running$'\e[0m'
 echo "Script finished.  View sync progress via http://$myIP:9090/graph?g0.range_input=1h&g0.expr=index_height&g0.tab=0.
 Your electrs onion address is"; sudo cat /var/lib/tor/electrs_hidden_service/hostname
