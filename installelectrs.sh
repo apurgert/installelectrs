@@ -84,26 +84,26 @@ else
 sudo touch /etc/systemd/system/electrs.service
 
 echo "
-[Unit] 
-Description=Electrs
-After=bitcoind.service
+[Unit]
+Description=Electrs Private Electrum Server installed via https://github.com/apurgert/installelectrs
+After=multi-user.target
 
-[Service] 
-WorkingDirectory=/home/futurebit/electrs 
-ExecStart=/home/futurebit/electrs/target/release/electrs 
-User=futurebit 
-Group=futurebit 
-Type=simple 
-KillMode=process 
-TimeoutSec=60 
-Restart=always 
+[Service]
+WorkingDirectory=/home/futurebit/electrs
+ExecStart=/home/futurebit/electrs/target/release/electrs
+User=futurebit
+Group=futurebit
+Type=simple
+KillMode=process
+TimeoutSec=60
+Restart=always
 RestartSec=60
 
 [Install]
 WantedBy=multi-user.target
 " | sudo tee -a /etc/systemd/system/electrs.service >/dev/null
 fi
-sudo systemctl start electrs
+sudo systemctl enable electrs --now
 
 if grep -q "electrs" "/etc/prometheus/prometheus.yml"; then
 
