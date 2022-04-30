@@ -8,7 +8,7 @@ sudo apt-get update
 sudo apt install -y clang cmake build-essential cargo tor prometheus
 echo $'\e[1;31m'This will run for 25+ minutes!!!$'\e[0m'
 cargo build --locked --release 
-mkdir /media/nvme/electrs 
+sudo mkdir /media/nvme/electrs 
 sudo chmod 777 /media/nvme/electrs 
 sudo mkdir /var/lib/tor/electrs_hidden_service/ 
 
